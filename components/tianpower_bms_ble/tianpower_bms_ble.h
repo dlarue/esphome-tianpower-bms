@@ -104,6 +104,12 @@ class TianpowerBmsBle : public esphome::ble_client::BLEClientNode, public Pollin
     this->temperatures_[temperature].temperature_sensor_ = temperature_sensor;
   }
 
+  void set_bms_version_text_sensor(text_sensor::TextSensor *bms_version_text_sensor) {
+    bms_version_text_sensor_ = bms_version_text_sensor;
+  }
+  void set_barcode_text_sensor(text_sensor::TextSensor *barcode_text_sensor) {
+    barcode_text_sensor_ = barcode_text_sensor;
+  }
   void set_software_version_text_sensor(text_sensor::TextSensor *software_version_text_sensor) {
     software_version_text_sensor_ = software_version_text_sensor;
   }
@@ -153,6 +159,8 @@ class TianpowerBmsBle : public esphome::ble_client::BLEClientNode, public Pollin
   sensor::Sensor *mosfet_temperature_sensor_;
   sensor::Sensor *state_of_health_sensor_;
 
+  text_sensor::TextSensor *bms_version_text_sensor_;
+  text_sensor::TextSensor *barcode_text_sensor_;
   text_sensor::TextSensor *software_version_text_sensor_;
   text_sensor::TextSensor *device_model_text_sensor_;
   text_sensor::TextSensor *voltage_protection_text_sensor_;
@@ -178,6 +186,8 @@ class TianpowerBmsBle : public esphome::ble_client::BLEClientNode, public Pollin
   uint8_t max_voltage_cell_{0};
   uint8_t min_voltage_cell_{0};
 
+  void decode_bms_version_data_(const std::vector<uint8_t> &data);
+  void decode_barcode_data_(const std::vector<uint8_t> &data);
   void decode_software_version_data_(const std::vector<uint8_t> &data);
   void decode_hardware_version_data_(const std::vector<uint8_t> &data);
   void decode_status_data_(const std::vector<uint8_t> &data);
