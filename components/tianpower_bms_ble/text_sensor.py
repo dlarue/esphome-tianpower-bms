@@ -9,8 +9,6 @@ DEPENDENCIES = ["tianpower_bms_ble"]
 
 CODEOWNERS = ["@syssi"]
 
-CONF_BMS_VERSION = "bms_version"
-CONF_BARCODE = "barcode"
 CONF_SOFTWARE_VERSION = "software_version"
 CONF_DEVICE_MODEL = "device_model"
 CONF_VOLTAGE_PROTECTION = "voltage_protection"
@@ -26,8 +24,6 @@ ICON_TEMPERATURE_PROTECTION = "mdi:alert-circle-outline"
 ICON_ERRORS = "mdi:alert-circle-outline"
 
 TEXT_SENSORS = [
-    CONF_BMS_VERSION,
-    CONF_BARCODE,
     CONF_SOFTWARE_VERSION,
     CONF_DEVICE_MODEL,
     CONF_VOLTAGE_PROTECTION,
@@ -39,12 +35,6 @@ TEXT_SENSORS = [
 CONFIG_SCHEMA = cv.Schema(
     {
         cv.GenerateID(CONF_TIANPOWER_BMS_BLE_ID): cv.use_id(TianpowerBmsBle),
-        cv.Optional(CONF_BMS_VERSION): text_sensor.text_sensor_schema(
-            text_sensor.TextSensor, icon=ICON_BMS_VERSION
-        ),
-        cv.Optional(CONF_BARCODE): text_sensor.text_sensor_schema(
-            text_sensor.TextSensor, icon=ICON_BARCODE
-        ),
         cv.Optional(CONF_SOFTWARE_VERSION): text_sensor.text_sensor_schema(
             text_sensor.TextSensor, icon=ICON_SOFTWARE_VERSION
         ),
