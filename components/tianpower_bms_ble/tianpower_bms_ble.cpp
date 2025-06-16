@@ -196,6 +196,8 @@ void TianpowerBmsBle::gattc_event_handler(esp_gattc_cb_event_t event, esp_gatt_i
     case ESP_GATTC_REG_FOR_NOTIFY_EVT: {
       this->node_state = espbt::ClientState::ESTABLISHED;
 
+      this->send_command_(TIANPOWER_FRAME_TYPE_BMS_VERSION);
+      this->send_command_(TIANPOWER_FRAME_TYPE_BARCODE);
       this->send_command_(TIANPOWER_FRAME_TYPE_SOFTWARE_VERSION);
       this->send_command_(TIANPOWER_FRAME_TYPE_HARDWARE_VERSION);
       break;
@@ -234,6 +236,12 @@ void TianpowerBmsBle::on_tianpower_bms_ble_data(const uint8_t &handle, const std
   uint8_t frame_type = data[2];
 
   switch (frame_type) {
+    case TIANPOWER_FRAME_TYPE_BMS_VERSION:
+      this->decode_bms_version_data_(data);
+      break;
+    case TIANPOWER_FRAME_TYPE_BARCODE:
+      this->decode_barcode_data_(data);
+      break;
     case TIANPOWER_FRAME_TYPE_SOFTWARE_VERSION:
       this->decode_software_version_data_(data);
       break;
