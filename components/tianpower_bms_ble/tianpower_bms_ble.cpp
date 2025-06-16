@@ -19,6 +19,8 @@ static const uint8_t TIANPOWER_FUNCTION_REQUEST = 0x04;
 static const uint8_t TIANPOWER_FUNCTION_RESPONSE = 0x14;
 static const uint8_t TIANPOWER_PKT_END = 0xAA;
 
+static const uint8_t TIANPOWER_FRAME_TYPE_BMS_VERSION  = 0x33;
+static const uint8_t TIANPOWER_FRAME_TYPE_BARCODE      = 0x42;
 static const uint8_t TIANPOWER_FRAME_TYPE_SOFTWARE_VERSION = 0x81;
 static const uint8_t TIANPOWER_FRAME_TYPE_HARDWARE_VERSION = 0x82;
 static const uint8_t TIANPOWER_FRAME_TYPE_STATUS = 0x83;
