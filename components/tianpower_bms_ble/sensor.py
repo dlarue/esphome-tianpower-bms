@@ -173,6 +173,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_TOTAL_VOLTAGE): sensor.sensor_schema(
             unit_of_measurement=UNIT_VOLT,
             icon=ICON_EMPTY,
+            accuracy_decimals=2,
             suggested_display_precision=2,
             device_class=DEVICE_CLASS_VOLTAGE,
             state_class=STATE_CLASS_MEASUREMENT,
@@ -180,6 +181,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_CURRENT): sensor.sensor_schema(
             unit_of_measurement=UNIT_AMPERE,
             icon=ICON_CURRENT_DC,
+            accuracy_decimals=2,
             suggested_display_precision=2,
             device_class=DEVICE_CLASS_CURRENT,
             state_class=STATE_CLASS_MEASUREMENT,
@@ -187,6 +189,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_POWER): sensor.sensor_schema(
             unit_of_measurement=UNIT_WATT,
             icon=ICON_EMPTY,
+            accuracy_decimals=2,
             suggested_display_precision=2,
             device_class=DEVICE_CLASS_POWER,
             state_class=STATE_CLASS_MEASUREMENT,
@@ -194,14 +197,16 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_CHARGING_POWER): sensor.sensor_schema(
             unit_of_measurement=UNIT_WATT,
             icon=ICON_EMPTY,
-            suggested_display_precision=2,
+            accuracy_decimals=2,
+			suggested_display_precision=2,
             device_class=DEVICE_CLASS_POWER,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
         cv.Optional(CONF_DISCHARGING_POWER): sensor.sensor_schema(
             unit_of_measurement=UNIT_WATT,
             icon=ICON_EMPTY,
-            suggested_display_precision=2,
+            accuracy_decimals=2,
+			suggested_display_precision=2,
             device_class=DEVICE_CLASS_POWER,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
